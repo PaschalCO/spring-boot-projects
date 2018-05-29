@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="language_tables" author="master">
+    	<validCheckSum>7:977f6b55e698920b6c196841c554990e</validCheckSum>
+        <!-- DEFINICIÓN TABLA: LANGUAGE -->
+        <createTable schemaName="language" tableName="language" remarks="Tabla maestro de idioma">
+            <column name="id" type="bigserial" defaultValueSequenceNext="language.language_id_seq" remarks="Identificador interno">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="pk_language" unique="true"/>
+            </column>
+            <column name="code" type="varchar(6)" remarks="Código de idioma">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="active" type="boolean" remarks="Indicador de si el idioma está o no activa">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addDefaultValue schemaName="language" tableName="language" columnName="active" defaultValue="true"/>
+        <createIndex schemaName="language" tableName="language"
+                     indexName="language_code_i" unique="true">
+            <column name="code"/>
+        </createIndex>
+        <createIndex schemaName="language" tableName="language"
+                     indexName="pk_language_i" unique="true">
+            <column name="id"/>
+        </createIndex>
+
+        <!-- DEFINICIÓN TABLA: LANGUAGE_i18n -->
+        <createTable schemaName="language" tableName="language_i18n" remarks="Tabla multilenguaje de idioma">
+
+            <column name="language_id" type="bigint" remarks="Id de idioma">
+                <constraints nullable="false" foreignKeyName="fk_language_i18n_language"
+                             references="language.language(id)"/>
+            </column>
+            <column name="multilanguage_id" type="bigint" remarks="Id de multiidioma">
+                <constraints nullable="false" foreignKeyName="fk_language_i18n_multilanguage"
+                             references="language.language(id)"/>
+            </column>
+            <column name="description" type="varchar(40)" remarks="Descripción de idioma multilenguaje">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey schemaName="language" tableName="language_i18n"
+                       constraintName="pk_language_i18n_language_id_multilanguage_id"
+                       columnNames="language_id, multilanguage_id"/>
+        <createIndex schemaName="language" tableName="language_i18n"
+                     indexName="pk_language_i18n_language_id_multilanguage_id_i" unique="true">
+            <column name="language_id"/>
+            <column name="multilanguage_id"/>
+        </createIndex>
+
+    </changeSet>
+
+</databaseChangeLog>

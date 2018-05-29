@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="product_product_type" author="master">
+        <validCheckSum>7:674195ac80cf82b36bebda8df225e9d2</validCheckSum>
+        <!-- DEFINICION TABLA: product_type -->
+        <createTable tableName="product_type"
+                     remarks="Tabla maestro de tipos de producto">
+            <column name="code" type="varchar(50)" remarks="Código de tipo producto">
+                <constraints primaryKey="true" primaryKeyName="pk_product_type"
+                             unique="true"
+                             nullable="false"/>
+            </column>
+            <column name="active" type="boolean" remarks="Indicador de si tipo producto está o no activo">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addDefaultValue columnName="active" defaultValue="true"
+                         tableName="product_type"/>
+
+        <createTable tableName="product_type_i18n"
+                     remarks="Tabla multilenguaje de tipos de producto">
+            <column name="product_type_code" type="varchar(50)" remarks="Código de tipo producto">
+                <constraints nullable="false" foreignKeyName="fk_product_type_i18n_product_type"
+                             references="product.product_type(code)"/>
+            </column>
+            <column name="language_id" type="bigint" remarks="Id del idioma">
+                <constraints nullable="false" foreignKeyName="fk_product_type_i18n_language"
+                             references="language.language(id)"/>
+            </column>
+            <column name="description" type="varchar(100)" remarks="Descripción de tipo producto">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="product_type_i18n"
+                       constraintName="pk_product_type_i18n_product_type_code_language_id"
+                       columnNames="product_type_code, language_id"/>
+
+    <!-- Grant permissions to rol 'apl_destination' -->
+    <changeSet id="Rol_Product" author="master">
+        <sql dbms="postgresql" endDelimiter=";" splitStatements="false" stripComments="true">
+            BEGIN;
+
+            DO $$
+            BEGIN
+            IF NOT EXISTS (SELECT 1 FROM pg_catalog.pg_user WHERE usename='apl_product') THEN
+            CREATE USER apl_product WITH
+            PASSWORD 'masterdata'
+            LOGIN
+            NOSUPERUSER
+            INHERIT
+            NOCREATEDB
+            NOCREATEROLE
+            NOREPLICATION;
+            END IF;
+
+            IF EXISTS (SELECT 1 FROM pg_catalog.pg_user WHERE usename='apl_product') THEN
+            GRANT SELECT, INSERT, UPDATE, DELETE
+            ON ALL TABLES IN SCHEMA product
+            TO apl_product;
+
+            GRANT USAGE, SELECT, UPDATE
+            ON ALL SEQUENCES IN SCHEMA product
+            TO apl_product;
+
+            GRANT EXECUTE
+            ON ALL FUNCTIONS IN SCHEMA product
+            TO apl_product;
+
+            GRANT SELECT, INSERT, UPDATE, DELETE
+            ON ALL TABLES IN SCHEMA language
+            TO apl_product;
+
+            GRANT USAGE, SELECT, UPDATE
+            ON ALL SEQUENCES IN SCHEMA language
+            TO apl_product;
+
+            GRANT EXECUTE
+            ON ALL FUNCTIONS IN SCHEMA language
+            TO apl_product;
+            
+            END IF;
+            END
+            $$;
+
+            COMMIT;
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

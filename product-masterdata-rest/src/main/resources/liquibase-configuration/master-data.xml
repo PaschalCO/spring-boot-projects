@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="product" author="master">
+        <!-- product_type -->
+        <insert tableName="product_type">
+            <column name="code">CAR</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">COM</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">CRU</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">HOT</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">TRA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">TRE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">VHC</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">VHT</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">VMH</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">VMT</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">VUE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <!-- product_type_i18n -->
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">CAR</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Coches</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">COM</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Combinado</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">CRU</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Cruceros</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">HOT</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Hoteles</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">TRA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Transfers</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">TRE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Trenes</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">VHC</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vuelo + Hotel + Coche</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">VHT</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vuelo + Hotel + Traslado</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">VMH</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vuelo + Hotel</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">VMT</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vuelo + Servicio Terrestre</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">VUE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vuelos</column>
+        </insert>
+
+        <!-- business_line_group -->
+        <insert tableName="business_line_group">
+            <column name="code">cruises</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line_group">
+            <column name="code">hotels</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line_group">
+            <column name="code">packages</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line_group">
+            <column name="code">transports</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <!-- business_line_group_i18n -->
+        <insert tableName="business_line_group_i18n">
+            <column name="business_line_group_code">cruises</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Cruceros</column>
+        </insert>
+        <insert tableName="business_line_group_i18n">
+            <column name="business_line_group_code">hotels</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Hoteles</column>
+        </insert>
+        <insert tableName="business_line_group_i18n">
+            <column name="business_line_group_code">packages</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Paquetes Vacacionales</column>
+        </insert>
+        <insert tableName="business_line_group_i18n">
+            <column name="business_line_group_code">transports</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Transportes</column>
+        </insert>
+        <!-- business_line -->
+        <insert tableName="business_line">
+            <column name="code">caribbean</column>
+            <column name="business_line_group_code">packages</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">car_rental</column>
+            <column name="business_line_group_code">transports</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">cruises</column>
+            <column name="business_line_group_code">cruises</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">disney</column>
+            <column name="business_line_group_code">packages</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">dynamic</column>
+            <column name="business_line_group_code">packages</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">flights</column>
+            <column name="business_line_group_code">transports</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">hotels</column>
+            <column name="business_line_group_code">hotels</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">ski</column>
+            <column name="business_line_group_code">packages</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">tours</column>
+            <column name="business_line_group_code">packages</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">trains</column>
+            <column name="business_line_group_code">transports</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="business_line">
+            <column name="code">transfers</column>
+            <column name="business_line_group_code">transports</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <!-- business_line_i18n -->
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">caribbean</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Caribe</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">car_rental</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Coches</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">cruises</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Cruceros</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">disney</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Disney</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">dynamic</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Paquete Dinámico</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">flights</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vuelos</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">hotels</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Hoteles</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">ski</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Nieve</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">tours</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Circuitos</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">trains</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Trenes</column>
+        </insert>
+        <insert tableName="business_line_i18n">
+            <column name="business_line_code">transfers</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Traslados</column>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="product_rest" author="master">
+        <!-- product_tax -->
+        <insert tableName="product_tax">
+            <column name="code">GEN21</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_tax">
+            <column name="code">EX</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_tax">
+            <column name="code">IGIC</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_tax">
+            <column name="code">GEN10</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_tax">
+            <column name="code">GENPT23</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_tax">
+            <column name="code">GENR</column>
+            <column name="active">TRUE</column>
+        </insert>
+
+        <insert tableName="product_tax_i18n">
+            <column name="product_tax_code">GEN21</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">General</column>
+            <column name="short_description">GEN21</column>
+        </insert>
+        <insert tableName="product_tax_i18n">
+            <column name="product_tax_code">EX</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Exento</column>
+            <column name="short_description">EX</column>
+        </insert>
+        <insert tableName="product_tax_i18n">
+            <column name="product_tax_code">IGIC</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">IGIC</column>
+            <column name="short_description">IGIC</column>
+        </insert>
+        <insert tableName="product_tax_i18n">
+            <column name="product_tax_code">GEN10</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">IVA General Reducido 10%</column>
+            <column name="short_description">GenRedu10</column>
+        </insert>
+        <insert tableName="product_tax_i18n">
+            <column name="product_tax_code">GENPT23</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">General 23% PT</column>
+            <column name="short_description">GENPT23</column>
+        </insert>
+        <insert tableName="product_tax_i18n">
+            <column name="product_tax_code">GENR</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">General Reducido</column>
+            <column name="short_description">GenReducido</column>
+        </insert>
+
+        <!-- product_tax -->
+        <insert tableName="product_comision_grouping">
+            <column name="code">GENER</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">NETO</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">URBANO</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">LARGA_DISTANCIA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">COSTA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">VINCULANTE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">PREFERENTE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">RESTO</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">ESPECIAL</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">URB10</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">URB13</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">URB12</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">COSTAS20</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">VINCULANTE17</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">VINCULANTE16</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">VINCULANTE15</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">URBANO14.25</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">Oferton</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSCOSTROP</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSCOSALMESOL</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSCOSLUZ</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSAZACALBLA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSCOSTADOR</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSBEN</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSCOSVAL</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EROSCOSBRA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">VINCULANTE EROSKI</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">TARJETAEROSKI</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">COSTA DINAMICA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CRUCERO</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_JOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_FAV</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_NEORIV</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_SOVEREIGN</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_DIA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_HOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_VOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_OP</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_MAGNI</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_MUS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CRU_PULL_ZENITH</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CRU_PULL_MONAR</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EXC_PULL_PACK</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_PQ_BEB</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EXC_MSC</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_PULL_PQ_BEB</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_FOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_ROTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_SOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_PULL_HORIZON</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_BOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_POE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_SPL</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_MED</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_MER</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_ORCH</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_MSC_DIV</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_MAGIC</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_LUM</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">BLACKF</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_FAS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EXC_RYC</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">COMISION-ISLAS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">VACA-NO-ES</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EXC_MSC_PAQ</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EXC_PULL_IND</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_PQ_BEB</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">IBEROSTAR15</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">IBEROSTAR17</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">IBEROSTAR13</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_PACIF</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_RC_SYOTS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_COS_NEOCLA</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">EXC_COS</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">URBA-NO-ES -</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_CEL_CONST</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_comision_grouping">
+            <column name="code">CR_CEL_REFLE</column>
+            <column name="active">TRUE</column>
+        </insert>
+
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">GENER</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">General</column>
+            <column name="short_description">GENER</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">NETO</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Neto</column>
+            <column name="short_description">NETO</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">URBANO</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision General(U)</column>
+            <column name="short_description">URBANO</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">LARGA_DISTANCIA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Larga Distancia</column>
+            <column name="short_description">LARGA_DISTANCIA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">COSTA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision General(C)</column>
+            <column name="short_description">COSTA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">VINCULANTE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Cerdito</column>
+            <column name="short_description">VINCULANTE</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">PREFERENTE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Preferente</column>
+            <column name="short_description">PREFERENTE</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">RESTO</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Resto Costas</column>
+            <column name="short_description">RESTO</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">ESPECIAL</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Especial</column>
+            <column name="short_description">ESPECIAL</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">URB10</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Específica(Hoteles 10%)</column>
+            <column name="short_description">URB10</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">URB13</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Urbano 13</column>
+            <column name="short_description">URB13</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">URB12</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Específica(Hoteles 12%)</column>
+            <column name="short_description">URB12</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">COSTAS20</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Costas 20</column>
+            <column name="short_description">COSTAS20</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">VINCULANTE17</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vinculante Especial Bhr</column>
+            <column name="short_description">VINCULANTE17</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">VINCULANTE16</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vinculante 16</column>
+            <column name="short_description">VINCULANTE16</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">VINCULANTE15</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vinculante 15</column>
+            <column name="short_description">VINCULANTE15</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">URBANO14.25</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Dinámica</column>
+            <column name="short_description">URBANO14.25</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">Oferton</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Oferton</column>
+            <column name="short_description">Oferton</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSCOSTROP</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Costa Tropical</column>
+            <column name="short_description">EROSCOSTROP</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSCOSALMESOL</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Costas-Alemría-Sol</column>
+            <column name="short_description">EROSCOSALMESOL</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSCOSLUZ</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Costa Luz</column>
+            <column name="short_description">EROSCOSLUZ</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSAZACALBLA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Costas - Azahar-Calida-Blanca</column>
+            <column name="short_description">EROSAZACALBLA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSCOSTADOR</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Costa Dorada Eroski</column>
+            <column name="short_description">EROSCOSTADOR</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSBEN</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Destino Benidorm Eroski</column>
+            <column name="short_description">EROSBEN</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSCOSVAL</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Costa Valenciana</column>
+            <column name="short_description">EROSCOSVAL</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EROSCOSBRA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Costa Brava</column>
+            <column name="short_description">EROSCOSBRA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">VINCULANTE EROSKI</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comision Vinculante Eroski</column>
+            <column name="short_description">VINCULANTE EROSKI</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">TARJETAEROSKI</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Tarjeta Eroski</column>
+            <column name="short_description">TARJETAEROSKI</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">COSTA DINAMICA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Dinámica(C)</column>
+            <column name="short_description">COSTA DINAMICA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CRUCERO</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero</column>
+            <column name="short_description">CRUCERO</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_JOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Jewel Of The Seas</column>
+            <column name="short_description">CR_RC_JOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_FAV</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Favolosa</column>
+            <column name="short_description">CR_COS_FAV</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_NEORIV</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Neo Riviera</column>
+            <column name="short_description">CR_COS_NEORIV</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_SOVEREIGN</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Sovereign</column>
+            <column name="short_description">CR_SOVEREIGN</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_DIA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Diadema</column>
+            <column name="short_description">CR_COS_DIA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_HOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Harmony Of The Seas</column>
+            <column name="short_description">CR_RC_HOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_VOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Vision Of The Seas</column>
+            <column name="short_description">CR_RC_VOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_OP</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Opera</column>
+            <column name="short_description">CR_MSC_OP</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_MAGNI</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Magnifica</column>
+            <column name="short_description">CR_MSC_MAGNI</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_MUS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Musica</column>
+            <column name="short_description">CR_MSC_MUS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CRU_PULL_ZENITH</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Pullmantur Zenith</column>
+            <column name="short_description">CRU_PULL_ZENITH</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CRU_PULL_MONAR</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Pullmantur Monarch</column>
+            <column name="short_description">CRU_PULL_MONAR</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EXC_PULL_PACK</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Paquete Excursiones Pullmantur</column>
+            <column name="short_description">EXC_PULL_PACK</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_PQ_BEB</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Paquete Bebidas</column>
+            <column name="short_description">CR_MSC_PQ_BEB</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EXC_MSC</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Excursiones Msc</column>
+            <column name="short_description">EXC_MSC</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_PULL_PQ_BEB</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Pullmantur Paquete Bebidas</column>
+            <column name="short_description">CR_PULL_PQ_BEB</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_FOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Freedom Of The Seas</column>
+            <column name="short_description">CR_RC_FOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_ROTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Rhapsody Of The Seas</column>
+            <column name="short_description">CR_RC_ROTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_SOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Serenade Of The Seas</column>
+            <column name="short_description">CR_RC_SOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_PULL_HORIZON</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Pullmantur Horizon</column>
+            <column name="short_description">CR_PULL_HORIZON</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_BOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Brilliance Of The Seas</column>
+            <column name="short_description">CR_RC_BOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_POE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Poesia</column>
+            <column name="short_description">CR_MSC_POE</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_SPL</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Splendida</column>
+            <column name="short_description">CR_MSC_SPL</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_MED</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Mediterránea</column>
+            <column name="short_description">CR_COS_MED</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_MER</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Meraviglia</column>
+            <column name="short_description">CR_MSC_MER</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_ORCH</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Orchestra</column>
+            <column name="short_description">CR_MSC_ORCH</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_MSC_DIV</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Msc Divina</column>
+            <column name="short_description">CR_MSC_DIV</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_MAGIC</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Magica</column>
+            <column name="short_description">CR_COS_MAGIC</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_LUM</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Luminosa</column>
+            <column name="short_description">CR_COS_LUM</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">BLACKF</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Campaña Black Friday</column>
+            <column name="short_description">BLACKF</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_FAS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Fascinosa</column>
+            <column name="short_description">CR_COS_FAS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EXC_RYC</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Excursiones Royal Caribbean</column>
+            <column name="short_description">EXC_RYC</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">COMISION-ISLAS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Comisión Islas</column>
+            <column name="short_description">COMISION-ISLAS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">VACA-NO-ES</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Vacacional No España</column>
+            <column name="short_description">VACA-NO-ES</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EXC_MSC_PAQ</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Excursiones Msc Paquetes</column>
+            <column name="short_description">EXC_MSC_PAQ</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EXC_PULL_IND</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Excursiones Pullmantur Individuales</column>
+            <column name="short_description">EXC_PULL_IND</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_PQ_BEB</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Cruceros Paquete Bebidas</column>
+            <column name="short_description">CR_COS_PQ_BEB</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">IBEROSTAR15</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Iberostar 15</column>
+            <column name="short_description">IBEROSTAR15</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">IBEROSTAR17</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Iberostar 17</column>
+            <column name="short_description">IBEROSTAR17</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">IBEROSTAR13</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Iberostar 13</column>
+            <column name="short_description">IBEROSTAR13</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_PACIF</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Pacifica</column>
+            <column name="short_description">CR_COS_PACIF</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_RC_SYOTS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Royal Caribbean Symphony Of The Seas</column>
+            <column name="short_description">CR_RC_SYOTS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_COS_NEOCLA</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Costa Neoclassica</column>
+            <column name="short_description">CR_COS_NEOCLA</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">EXC_COS</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Excursiones Costa Cruceros</column>
+            <column name="short_description">EXC_COS</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">URBA-NO-ES -</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Urbano No España</column>
+            <column name="short_description">URBA-NO-ES -</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_CEL_CONST</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Celebrity Constellation</column>
+            <column name="short_description">CR_CEL_CONST</column>
+        </insert>
+        <insert tableName="product_comision_grouping_i18n">
+            <column name="product_comision_grouping_code">CR_CEL_REFLE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Crucero Celebrity Reflection</column>
+            <column name="short_description">CR_CEL_REFLE</column>
+        </insert>
+
+        <insert tableName="product_channel">
+            <column name="code">D</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_channel">
+            <column name="code">I</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_channel">
+            <column name="code">F</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_channel">
+            <column name="code">W</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_channel">
+            <column name="code">E</column>
+            <column name="active">TRUE</column>
+        </insert>
+
+        <insert tableName="product_channel_i18n">
+            <column name="product_channel_code">D</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Desktop</column>
+            <column name="short_description">D</column>
+        </insert>
+        <insert tableName="product_channel_i18n">
+            <column name="product_channel_code">I</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Internet Sale</column>
+            <column name="short_description">I</column>
+        </insert>
+        <insert tableName="product_channel_i18n">
+            <column name="product_channel_code">F</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Final Client</column>
+            <column name="short_description">F</column>
+        </insert>
+        <insert tableName="product_channel_i18n">
+            <column name="product_channel_code">W</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Web Services</column>
+            <column name="short_description">W</column>
+        </insert>
+        <insert tableName="product_channel_i18n">
+            <column name="product_channel_code">E</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">External Connector</column>
+            <column name="short_description">E</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="product2" author="master">
+        <!-- product_type -->
+        <insert tableName="product_type">
+            <column name="code">FERRY</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">HIGHLIGHT</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">PACKAGE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">OTHER</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <insert tableName="product_type">
+            <column name="code">SERVICE</column>
+            <column name="active">TRUE</column>
+        </insert>
+        <!-- product_type_i18n -->
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">FERRY</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Barco</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">HIGHLIGHT</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Destacado</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">PACKAGE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Paquete</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">OTHER</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Otros Servicios</column>
+        </insert>
+        <insert tableName="product_type_i18n">
+            <column name="product_type_code">SERVICE</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="description">Servicio Vario</column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

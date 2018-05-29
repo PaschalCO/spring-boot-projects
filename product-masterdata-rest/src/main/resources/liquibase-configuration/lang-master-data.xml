@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+	<changeSet id="language_data" author="master">
+		<!-- DATOS MAESTROS DE IDIOMA -->
+        <insert schemaName="language" tableName="language">
+            <column name="code">es_ES</column>
+        </insert>
+        
+        <insert schemaName="language" tableName="language">
+            <column name="code">fr_FR</column>
+			<column name="active">false</column>
+        </insert>
+        
+        <insert schemaName="language" tableName="language">
+            <column name="code">en_GB</column>
+        </insert>
+        
+        <insert schemaName="language" tableName="language">
+            <column name="code">de_DE</column>
+			<column name="active">false</column>
+        </insert>
+        
+		<insert schemaName="language" tableName="language">
+            <column name="code">it_IT</column>
+			<column name="active">false</column>
+        </insert>
+		
+		<insert schemaName="language" tableName="language">
+            <column name="code">no_No</column>
+			<column name="active">false</column>
+        </insert>
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">hu_HU</column>
+			<column name="active">false</column>
+        </insert>
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">unk_BR</column>
+			<column name="active">false</column>
+        </insert>
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">ro_RO</column>
+        </insert>
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">pl_PL</column>
+			<column name="active">false</column>
+        </insert>		
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">fi_FI</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">ar_SA</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">cz_CZ</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">zh_CN</column>			
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">ko_KR</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">da_DK</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">nl_BE</column>
+			<column name="active">false</column>
+        </insert>			
+		
+		<insert schemaName="language" tableName="language">
+            <column name="code">ja_JP</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">pt_PT</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">sv_SE</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">bg_BG</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">eu_ES</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">ca_ES</column>
+			<column name="active">false</column>
+        </insert>	
+
+		<insert schemaName="language" tableName="language">
+            <column name="code">gl_ES</column>
+			<column name="active">false</column>
+        </insert>	
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Español</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+        
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Spanish</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'en_GB')"></column>
+        </insert>
+        
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Espagnol</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'fr_FR')"></column>
+        </insert>
+        
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Spanisch</column>
+            <column name="language_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'de_DE')"></column>
+        </insert>
+		
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Italiano</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'it_IT')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Noruego</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'no_No')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Húngaro</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'hu_HU')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Enawené-Nawé</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'unk_BR')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Francés</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'fr_FR')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Rumano</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'ro_RO')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Polaco</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'fi_FI')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Árabe</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'ar_SA')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>		
+		
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Checo</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'cz_CZ')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Inglés</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'en_GB')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Chino</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'zh_CN')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Coreano</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'ko_KR')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Danés</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'da_DK')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Flamenco</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'nl_BE')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Japonés</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'ja_JP')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Portugués</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'pt_PT')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Sueco</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'sv_SE')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Alemán</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'de_DE')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Búlgaro</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'bg_BG')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Euskera</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'eu_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Catalán</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'ca_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+
+        <insert schemaName="language" tableName="language_i18n">
+            <column name="description">Gallego</column>
+            <column name="language_id"  valueComputed="(SELECT id FROM language.language WHERE code = 'gl_ES')"></column>
+            <column name="multilanguage_id" valueComputed="(SELECT id FROM language.language WHERE code = 'es_ES')"></column>
+        </insert>
+		
+    </changeSet>
+</databaseChangeLog>
