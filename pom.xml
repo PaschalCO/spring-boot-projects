@@ -3,47 +3,157 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.barcelo.microservices</groupId>
-    <artifactId>product-apps-masterdata</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>product-apps-masterdata</name>
-    <description>Demo project for Spring Boot</description>
-
     <parent>
         <groupId>com.barcelo</groupId>
         <artifactId>master-apps</artifactId>
         <version>1.0.8</version>
     </parent>
 
+    <groupId>com.barcelo.microservices</groupId>
+    <artifactId>product-apps-masterdata</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>product-apps-masterdata</name>
+    <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>product-masterdata-rest</module>
+        <module>product-masterdata-rest-api</module>
+    </modules>
+
     <properties>
+        <!-- Build version dependencies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <java.compiler.version>1.8</java.compiler.version>
+        <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
+        <postgresql.version>9.4-1206-jdbc42</postgresql.version>
+        <maven-compiler-plugin.version>2.5.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+
+        <!-- 3trh version dependencies -->
+        <feign-version>9.5.1</feign-version>
+        <liquibase.version>3.2.2</liquibase.version>
+        <swagger.version>2.4.0</swagger.version>
+        <junit.version>4.12</junit.version>
+        <jacoco.version>0.7.9</jacoco.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+    <dependencyManagement>
+        <!-- Spring-boot dependencies -->
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+    <dependencies>
     </dependencies>
+
+    <scm>
+        <developerConnection>scm:git:https://bitbucket.barceloviajes.com/scm/em/apps-rest-masterdata-provider.git</developerConnection>
+        <connection>scm:git:https://bitbucket.barceloviajes.com/scm/em/apps-rest-masterdata-provider.git</connection>
+        <url>https://bitbucket.barceloviajes.com/scm/em/apps-rest-masterdata-provider.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <username>${scm.username}</username>
+                    <password>${scm.password}</password>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <skipSource>true</skipSource>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <fork>true</fork>
+                    <meminitial>1000m</meminitial>
+                    <maxmem>1000m</maxmem>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven-deploy-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <destFile>${project.basedir}/../target/jacoco.exec</destFile>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>${project.basedir}/../target/jacoco.exec</dataFile>
+                            <outputDirectory>${project.basedir}/../target/jacoco-ut</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
-
-
 </project>

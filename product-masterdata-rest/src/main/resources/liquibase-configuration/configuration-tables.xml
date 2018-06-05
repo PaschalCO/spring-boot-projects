@@ -39,6 +39,7 @@
         <addPrimaryKey tableName="product_type_i18n"
                        constraintName="pk_product_type_i18n_product_type_code_language_id"
                        columnNames="product_type_code, language_id"/>
+    </changeSet>
 
     <!-- Grant permissions to rol 'apl_destination' -->
     <changeSet id="Rol_Product" author="master">
@@ -82,7 +83,7 @@
             GRANT EXECUTE
             ON ALL FUNCTIONS IN SCHEMA language
             TO apl_product;
-            
+
             END IF;
             END
             $$;

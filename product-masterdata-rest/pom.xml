@@ -1,34 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<artifactId>product-masterdata-rest</artifactId>
-	<packaging>jar</packaging>
+    <parent>
+        <groupId>com.barcelo.microservices</groupId>
+        <artifactId>product-apps-masterdata</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-	<name>product-masterdata-rest</name>
-	<description>Demo project for Spring Boot</description>
+    <artifactId>product-masterdata-rest</artifactId>
+    <packaging>pom</packaging>
 
-	<parent>
-		<groupId>com.barcelo.microservices</groupId>
-		<artifactId>product-apps-masterdata</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <name>product-masterdata-rest</name>
+    <description>Demo project for Spring Boot</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <!-- Build version dependencies -->
+        <!-- Barcelo version dependencies -->
+        <!-- 3trh version dependencies -->
 
-	<dependencies>
+        <!-- Database connection (default to localhost) -->
+        <db.url>jdbc:postgresql://localhost:5432/my_projects</db.url>
+        <db.username>postgres</db.username>
+        <db.password>admin</db.password>
+    </properties>
 
-	</dependencies>
+    <dependencies>
+        <!-- PROVIDED DEPENDENCIES -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- BARCELO DEPENDENCIES -->
+        <dependency>
+            <groupId>com.barcelo.masterdata.libs</groupId>
+            <artifactId>microservices-utilities</artifactId>
+            <version>1.1.10</version>
+        </dependency>
 
-	<build>
+        <dependency>
+            <groupId>com.avoristravel.infrastructure.microservices</groupId>
+            <artifactId>apim-security-filter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- 3trh DEPENDENCIES -->
 
-	</build>
+        <!-- Spring-boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
+        <!-- BBDD Dependencies -->
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+        <!-- PROVIDED DEPENDENCIES -->
+
+        <!-- TEST DEPENDENCIES -->
+    </dependencies>
+
+    <build>
+        <finalName>ROOT</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <outputDirectory>../target</outputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+
+        <profile>
+            <id>liquibase</id>
+            <activation>
+                <property>
+                    <!-- Valor de la variable de entorno necesario para la activacion del perfil. -->
+                    <name>env.MASTERDATA_LIQUIBASE_ENV</name> <!-- crear variable entorno openshift  -->
+                    <value>liquibase</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>${liquibase.version}</version>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                            <changeLogFile>src/main/resources/db-changelog-master.xml</changeLogFile>
+                            <driver>org.postgresql.Driver</driver>
+                            <url>${db.url}</url>
+                            <username>${db.username}</username>
+                            <password>${db.password}</password>
+                            <verbose>true</verbose>
+                            <defaultSchemaName>product</defaultSchemaName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
