@@ -25,6 +25,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.barcelo.masterdata.libs</groupId>
+            <artifactId>microservices-api-support</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>
