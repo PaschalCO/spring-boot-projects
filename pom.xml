@@ -62,13 +62,6 @@
     <dependencies>
     </dependencies>
 
-    <scm>
-        <developerConnection>scm:git:https://bitbucket.barceloviajes.com/scm/em/apps-rest-masterdata-provider.git</developerConnection>
-        <connection>scm:git:https://bitbucket.barceloviajes.com/scm/em/apps-rest-masterdata-provider.git</connection>
-        <url>https://bitbucket.barceloviajes.com/scm/em/apps-rest-masterdata-provider.git</url>
-        <tag>HEAD</tag>
-    </scm>
-
     <build>
         <plugins>
             <plugin>

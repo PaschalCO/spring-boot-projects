@@ -1,7 +1,7 @@
-package com.barcelo.microservices.productappsmasterdata.domain.entity;
+package com.barcelo.microservices.producttype.domain.entity;
 
 import com.barcelo.masterdata.language.domain.entity.support.JpaI18nEntity;
-import com.barcelo.microservices.productappsmasterdata.domain.entity.key.ProductTypeI18nEntityPK;
+import com.barcelo.microservices.producttype.domain.entity.key.ProductTypeI18nEntityPK;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

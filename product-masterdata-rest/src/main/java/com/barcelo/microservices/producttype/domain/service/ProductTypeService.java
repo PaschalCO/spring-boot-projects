@@ -1,13 +1,14 @@
-package com.barcelo.microservices.productappsmasterdata.domain.service;
+package com.barcelo.microservices.producttype.domain.service;
 
 import com.barcelo.microservices.product.masterdata.rest.model.ProductType;
-import com.barcelo.microservices.productappsmasterdata.domain.entity.ProductTypeEntity;
-import com.barcelo.microservices.productappsmasterdata.domain.repository.ProductTypeRepository;
-import com.barcelo.microservices.productappsmasterdata.rest.converter.ProductTypeConverter;
+import com.barcelo.microservices.producttype.domain.entity.ProductTypeEntity;
+import com.barcelo.microservices.producttype.domain.repository.ProductTypeRepository;
+import com.barcelo.microservices.producttype.rest.converter.ProductTypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,7 +17,6 @@ import java.util.List;
 @Service
 public class ProductTypeService {
 
-    @Autowired
     private final ProductTypeRepository repository;
 
     /**
@@ -24,7 +24,8 @@ public class ProductTypeService {
      *
      * @param repository the repository
      */
-    public ProductTypeService(ProductTypeRepository repository) {
+    @Autowired
+    public ProductTypeService(final ProductTypeRepository repository) {
         this.repository = repository;
     }
 
@@ -36,9 +37,10 @@ public class ProductTypeService {
     public List<ProductType> findAll() {
         Iterable<ProductTypeEntity> all = this.repository.findAll();
         List<ProductType> productTypeList = new ArrayList<>();
-        for (ProductTypeEntity productTypeEntity : all) {
-            productTypeList.add(ProductTypeConverter.convertTo(productTypeEntity));
-        }
+//        for (ProductTypeEntity productTypeEntity : all) {
+//            productTypeList.add(ProductTypeConverter.convertTo(productTypeEntity));
+//        }
+        all.forEach(productTypeEntity -> productTypeList.add(ProductTypeConverter.convertTo(productTypeEntity)));
         return productTypeList;
     }
 
@@ -49,7 +51,14 @@ public class ProductTypeService {
      * @return the product type
      */
     public ProductType findByCode(final String code) {
-        ProductTypeEntity productTypeEntity = this.repository.findByCode(code);
+        List<ProductTypeEntity> list = this.repository.findAll();
+
+        ProductTypeEntity productTypeEntity = list.stream()
+                .filter(entity -> entity.getCode().equals(code))
+                .findFirst()
+                .get();
+
+//        ProductTypeEntity productTypeEntity = this.repository.findByCode(code);
         return ProductTypeConverter.convertTo(productTypeEntity);
     }
 
@@ -79,7 +88,7 @@ public class ProductTypeService {
         }
 
         ProductTypeEntity productTypeEntity = this.repository.findByCode(productType.getCode());
-        productTypeEntity.setActive(false);
+        productTypeEntity.setActive(productType.getActive());
 
         this.repository.save(productTypeEntity);
     }

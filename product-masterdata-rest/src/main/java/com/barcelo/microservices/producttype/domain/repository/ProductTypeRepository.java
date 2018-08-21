@@ -1,6 +1,6 @@
-package com.barcelo.microservices.productappsmasterdata.domain.repository;
+package com.barcelo.microservices.producttype.domain.repository;
 
-import com.barcelo.microservices.productappsmasterdata.domain.entity.ProductTypeEntity;
+import com.barcelo.microservices.producttype.domain.entity.ProductTypeEntity;
 import com.barcelo.microservices.utilities.repository.RepositorySupport;
 
 /**

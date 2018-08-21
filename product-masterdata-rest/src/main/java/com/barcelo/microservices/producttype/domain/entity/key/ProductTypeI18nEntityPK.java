@@ -1,8 +1,8 @@
-package com.barcelo.microservices.productappsmasterdata.domain.entity.key;
+package com.barcelo.microservices.producttype.domain.entity.key;
 
 import com.barcelo.masterdata.language.domain.entity.LanguageEntity;
 import com.barcelo.masterdata.language.domain.entity.support.JpaI18nEntityPK;
-import com.barcelo.microservices.productappsmasterdata.domain.entity.ProductTypeEntity;
+import com.barcelo.microservices.producttype.domain.entity.ProductTypeEntity;
 
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;

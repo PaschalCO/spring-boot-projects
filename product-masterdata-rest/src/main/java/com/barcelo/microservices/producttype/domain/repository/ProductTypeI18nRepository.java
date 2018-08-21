@@ -1,7 +1,7 @@
-package com.barcelo.microservices.productappsmasterdata.domain.repository;
+package com.barcelo.microservices.producttype.domain.repository;
 
-import com.barcelo.microservices.productappsmasterdata.domain.entity.ProductTypeI18nEntity;
-import com.barcelo.microservices.productappsmasterdata.domain.entity.key.ProductTypeI18nEntityPK;
+import com.barcelo.microservices.producttype.domain.entity.ProductTypeI18nEntity;
+import com.barcelo.microservices.producttype.domain.entity.key.ProductTypeI18nEntityPK;
 import com.barcelo.microservices.utilities.repository.RepositoryI18nSupport;
 
 import java.util.List;

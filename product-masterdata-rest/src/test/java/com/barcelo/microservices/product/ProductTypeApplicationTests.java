@@ -1,4 +1,4 @@
-package com.barcelo.microservices.productappsmasterdata;
+package com.barcelo.microservices.product;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ProductAppsMasterdataApplicationTests {
+public class ProductTypeApplicationTests {
 
 	@Test
 	public void contextLoads() {

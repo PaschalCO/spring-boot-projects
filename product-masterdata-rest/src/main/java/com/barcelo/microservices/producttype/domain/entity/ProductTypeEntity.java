@@ -1,4 +1,4 @@
-package com.barcelo.microservices.productappsmasterdata.domain.entity;
+package com.barcelo.microservices.producttype.domain.entity;
 
 
 import com.barcelo.masterdata.language.domain.entity.support.JpaEntity;
