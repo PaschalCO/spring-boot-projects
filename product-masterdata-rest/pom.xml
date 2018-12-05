@@ -7,7 +7,6 @@
         <groupId>com.barcelo.microservices</groupId>
         <artifactId>product-apps-masterdata</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>product-masterdata-rest</artifactId>
@@ -83,7 +82,13 @@
         <dependency>
             <groupId>com.barcelo.microservices</groupId>
             <artifactId>product-masterdata-rest-api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.barcelo.masterdata.libs</groupId>
+            <artifactId>microservices-utilities</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- PROVIDED DEPENDENCIES -->
 
@@ -110,45 +115,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-
-        <profile>
-            <id>liquibase</id>
-            <activation>
-                <property>
-                    <!-- Valor de la variable de entorno necesario para la activacion del perfil. -->
-                    <name>env.MASTERDATA_LIQUIBASE_ENV</name> <!-- crear variable entorno openshift  -->
-                    <value>liquibase</value>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.liquibase</groupId>
-                        <artifactId>liquibase-maven-plugin</artifactId>
-                        <version>${liquibase.version}</version>
-                        <executions>
-                            <execution>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>update</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                            <changeLogFile>src/main/resources/db-changelog-master.xml</changeLogFile>
-                            <driver>org.postgresql.Driver</driver>
-                            <url>${db.url}</url>
-                            <username>${db.username}</username>
-                            <password>${db.password}</password>
-                            <verbose>true</verbose>
-                            <defaultSchemaName>product</defaultSchemaName>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>

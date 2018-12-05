@@ -90,12 +90,16 @@ public class ProductTypeController {
     /**
      * Delete.
      *
-     * @param productType the product type
+     * @param code the code
      * @throws Exception the exception
      */
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
     @ApiOperation(value = "Delete a Product Type")
-    public void delete(@RequestBody final ProductType productType) throws Exception {
-        this.productTypeService.delete(productType);
+    public void delete(final @PathVariable String code) throws Exception {
+        this.productTypeService.delete(code);
     }
 }
+
+//Return Http response bodies instead of void
+//Path should be constants
+//ExceptionHandling

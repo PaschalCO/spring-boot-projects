@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -96,19 +95,16 @@ public class ProductTypeService {
     /**
      * Delete.
      *
-     * @param productType the product type
+     * @param code the code
      * @throws Exception the exception
      */
-    public void delete(final ProductType productType) throws Exception {
-        if (productType == null) {
+    public void delete(final String code) throws Exception {
+        ProductTypeEntity productTypeEntity = this.repository.findByCode(code);
+
+        if (productTypeEntity == null) {
             throw new Exception("Entity id null");
         }
-
-        ProductTypeEntity productTypeEntity = this.repository.findByCode(productType.getCode());
-
         productTypeEntity.setActive(false);
-
         this.repository.save(productTypeEntity);
     }
-
 }
