@@ -9,18 +9,13 @@
         <version>1.0.8</version>
     </parent>
 
-    <groupId>com.barcelo.microservices</groupId>
+    <groupId>com.paschal.microservices</groupId>
     <artifactId>product-apps-masterdata</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>product-apps-masterdata</name>
     <description>Demo project for Spring Boot</description>
-
-    <modules>
-        <module>product-masterdata-rest</module>
-        <module>product-masterdata-rest-api</module>
-    </modules>
 
     <properties>
         <!-- Build version dependencies -->
@@ -40,6 +35,11 @@
         <junit.version>4.12</junit.version>
         <jacoco.version>0.7.9</jacoco.version>
     </properties>
+
+    <modules>
+        <module>product-masterdata-rest</module>
+        <module>product-masterdata-rest-api</module>
+    </modules>
 
     <dependencyManagement>
         <!-- Spring-boot dependencies -->

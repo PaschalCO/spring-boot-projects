@@ -4,7 +4,6 @@ package com.barcelo.microservices.producttype.rest.controller;
 import com.barcelo.microservices.product.masterdata.rest.constants.ModelConstants;
 import com.barcelo.microservices.product.masterdata.rest.model.ProductType;
 import com.barcelo.microservices.producttype.domain.service.ProductTypeService;
-import com.sun.xml.internal.ws.api.pipe.ContentType;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
